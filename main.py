@@ -227,24 +227,23 @@ class YourAssistantApp(ctk.CTk):
 
     def get_ai_response(self, user_msg):
         try:
-            print("[DEBUG] Sending to DeepSeek API (single-turn):", user_msg)
+            print("[DEBUG] Sending to OpenRouter API (single-turn):", user_msg)
             completion = client.chat.completions.create(
                 extra_headers={
-                    "HTTP-Referer": "https://your-assistant.local",  # Optional
-                    "X-Title": "Your Assistant",  # Optional
+                    "HTTP-Referer": "https://mindmate.local",
+                    "X-Title": "MindMate Study Assistant",
                 },
-                extra_body={},
                 model="deepseek/deepseek-r1:free",
                 messages=[
                     {"role": "system", "content": PLAIN_SYSTEM_PROMPT},
                     {"role": "user", "content": user_msg}
                 ]
             )
-            print("[DEBUG] DeepSeek API response:", completion)
+            print("[DEBUG] OpenRouter API response:", completion)
             ai_msg = completion.choices[0].message.content
             ai_msg = clean_ai_response(ai_msg)
         except Exception as e:
-            print("[ERROR] DeepSeek API call failed:", e)
+            print("[ERROR] OpenRouter API call failed:", e)
             ai_msg = f"[Error contacting AI: {e}]"
         self.append_chat("Assistant", ai_msg)
 
@@ -289,10 +288,9 @@ class YourAssistantApp(ctk.CTk):
         try:
             completion = client.chat.completions.create(
                 extra_headers={
-                    "HTTP-Referer": "https://your-assistant.local",
-                    "X-Title": "Your Assistant",
+                    "HTTP-Referer": "https://mindmate.local",
+                    "X-Title": "MindMate Study Assistant",
                 },
-                extra_body={},
                 model="deepseek/deepseek-r1:free",
                 messages=[
                     {"role": "system", "content": PLAIN_SYSTEM_PROMPT},
@@ -454,10 +452,9 @@ class YourAssistantApp(ctk.CTk):
         try:
             completion = client.chat.completions.create(
                 extra_headers={
-                    "HTTP-Referer": "https://your-assistant.local",
-                    "X-Title": "Your Assistant",
+                    "HTTP-Referer": "https://mindmate.local",
+                    "X-Title": "MindMate Study Assistant",
                 },
-                extra_body={},
                 model="deepseek/deepseek-r1:free",
                 messages=[
                     {"role": "system", "content": PLAIN_SYSTEM_PROMPT},
