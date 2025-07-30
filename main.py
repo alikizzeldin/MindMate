@@ -10,7 +10,7 @@ ctk.set_appearance_mode("Dark")  # Modes: "System" (default), "Dark", "Light"
 ctk.set_default_color_theme("blue")
 
 # --- DeepSeek/OpenRouter API Setup ---
-API_KEY = "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"
+API_KEY = "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"
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=API_KEY,
